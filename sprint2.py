@@ -205,7 +205,7 @@ elif my_page == 'Results':
         st.header('Who should SB19 collaborate with?')
         
         st.subheader('OPM Recommendations')
-        image = Image.open('opm.png')
+        image = Image.open('opm1.png')
         st.image(image)
         
         st.subheader('KPOP Recommendations')
