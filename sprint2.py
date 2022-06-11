@@ -1,6 +1,7 @@
 # Streamlit Output for Sprint 2 - Group 4
 
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -45,7 +46,7 @@ sb19df_features_stacked = sb19df_features_stacked.reset_index()
 sb19df_features_stacked = sb19df_features_stacked.rename(columns={'level_2': 'feature'})
 
 # Actual Page
-my_page = st.sidebar.radio('Page Navigation', ['About', 'EDA', 'Results'])
+my_page = st.sidebar.radio('Page Navigation', ['About', 'EDA', 'Results', 'Playlists'])
 
 # About Page 
 if my_page == 'About':
@@ -259,3 +260,23 @@ elif my_page == 'Results':
     elif option == 'Final Insights':
         image = Image.open('final_insights.png')
         st.image(image)
+        
+elif my_page == 'Playlists':
+    
+    st.title("Song Recommendations")
+    
+    st.header("Key Track: MAPA")
+    
+    st.video("https://www.youtube.com/watch?v=DDyr3DbTPtk")
+    
+    st.markdown('The most streamed SB19 track in Spotify is the single MAPA; hence, we selected it as seed track for the recommender engine. We looked into possible collaboration of SB19 with K-Pop and OPM artists and came up with two playlists.',unsafe_allow_html=False)
+    
+    st.header("Spotify Playlist: OPM Recommendations")
+    playlist_uri = '2TTlW7hihIS1gmMCgzJ4M4'
+    uri_link = 'https://open.spotify.com/embed/playlist/' + playlist_uri
+    components.iframe(uri_link, height=300)
+    
+    st.header("Spotify Playlist: K-Pop Recommendations")
+    playlist_uri = '54tF3K5EWEbnbyGlj9SmFs'
+    uri_link = 'https://open.spotify.com/embed/playlist/' + playlist_uri
+    components.iframe(uri_link, height=300)
